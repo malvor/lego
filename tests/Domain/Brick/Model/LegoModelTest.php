@@ -31,6 +31,21 @@ class LegoModelTest extends TestCase
         $this->assertEquals(1, $legoModel->countBricks());
     }
 
+    public function testCanAddMoreBricksToLegoModel()
+    {
+        $brick1 = Brick::create(
+            new BrickId(),
+            []
+        );
+        $brick2 = Brick::create(
+            new BrickId(),
+            []
+        );
+        $legoModel = $this->getLegoModel();
+        $legoModel->addABrick($brick1, $brick2, $brick1);
+        $this->assertEquals(3, $legoModel->countBricks());
+    }
+
     private function getLegoModel() : LegoModel
     {
         return LegoModel::create(

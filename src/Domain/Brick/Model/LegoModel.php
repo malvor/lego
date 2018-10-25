@@ -38,11 +38,13 @@ final class LegoModel extends AggregateRoot
     }
 
     /**
-     * @param Brick $brick
+     * @param Brick[] $brick
      */
-    public function addABrick(Brick $brick) : void
+    public function addABrick(Brick ...$bricks) : void
     {
-        $this->brickCollection[] = $brick;
+        foreach ($bricks as $brick) {
+            $this->brickCollection[] = $brick;
+        }
     }
 
     /**
